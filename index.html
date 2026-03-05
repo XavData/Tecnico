@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convocação Oficial - Prof. Almir</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;700;900&display=swap');
+
+        :root {
+            --gold: #FFD700;
+            --fire: #FF4500;
+            --dark: #0a0a0a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark);
+            color: white;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Fundo desfocado com a imagem épica */
+        .background {
+            position: absolute;
+            top: -5%;
+            left: -5%;
+            width: 110%;
+            height: 110%;
+            background-image: url('Gemini_Generated_Image_ictrh6ictrh6ictr.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(15px) brightness(0.3);
+            z-index: -2;
+            animation: pulseBg 10s infinite alternate;
+        }
+
+        @keyframes pulseBg {
+            0% { transform: scale(1); filter: blur(15px) brightness(0.2); }
+            100% { transform: scale(1.05); filter: blur(15px) brightness(0.4); }
+        }
+
+        /* Container Principal em Glassmorphism */
+        .glass-panel {
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            width: 90%;
+            max-width: 1000px;
+            height: 85vh;
+            display: flex;
+            gap: 40px;
+            box-shadow: 0 0 50px rgba(255, 69, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Brilho interno */
+        .glass-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,215,0,0.1), transparent);
+            transform: skewX(-20deg);
+            animation: shine 5s infinite;
+        }
+
+        @keyframes shine {
+            100% { left: 200%; }
+        }
+
+        /* Lado Esquerdo - Poster e Player */
+        .visual-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .poster {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px var(--fire);
+            border: 2px solid var(--gold);
+            transition: transform 0.3s ease;
+        }
+
+        .poster:hover {
+            transform: scale(1.02);
+        }
+
+        .play-btn {
+            background: linear-gradient(45deg, var(--fire), var(--gold));
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--dark);
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+        }
+
+        /* Lado Direito - Letra Sincronizada */
+        .lyrics-section {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            mask-image: linear-gradient(transparent, black 15%, black 85%, transparent);
+            -webkit-mask-image: linear-gradient(transparent, black 15%, black 85%, transparent);
+        }
+
+        #lyrics-container {
+            height: 100%;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            padding: 50% 0; /* Espaço para centralizar a primeira/última linha */
+            text-align: center;
+        }
+
+        /* Esconder a barra de rolagem */
+        #lyrics-container::-webkit-scrollbar { display: none; }
+        #lyrics-container { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .lyric-line {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.3);
+            margin: 20px 0;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+        }
+
+        .lyric-line.active {
+            color: var(--gold);
+            font-size: 2rem;
+            text-shadow: 0 0 15px var(--fire), 0 0 30px var(--gold);
+            transform: scale(1.1);
+        }
+
+        .lyric-section-title {
+            font-family: 'Cinzel', serif;
+            color: var(--fire);
+            font-size: 1.2rem;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+
+        @media (max-width: 800px) {
+            .glass-panel { flex-direction: column; height: 95vh; padding: 20px; overflow-y: auto;}
+            .lyrics-section { min-height: 50vh; }
+            .lyric-line { font-size: 1.2rem; }
+            .lyric-line.active { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div>
+
+    <div class="glass-panel">
+        <div class="visual-section">
+            <img src="Gemini_Generated_Image_ictrh6ictrh6ictr.png" alt="Pôster Oficial" class="poster">
+            <button id="playBtn" class="play-btn">▶ Iniciar Convocação</button>
+            <audio id="audio" src="Oficiao v1.mp3"></audio>
+        </div>
+
+        <div class="lyrics-section">
+            <div id="lyrics-container">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        // Array com a letra e os tempos aproximados em SEGUNDOS.
+        // DICA DE OURO: Ajuste os valores de 'time' testando o áudio para sincronizar com perfeição!
+const lyricsData = [
+    { time: 4, text: "🎶 “Professor, Vem Treinar Nosso Coração” 🎶", type: "title" },
+    { time: 8, text: "(Introdução – clima emocionante)", type: "section" },
+    { time: 12, text: "Entre SELECT e JOIN…" },
+    { time: 15, text: "Entre tabela e visão…" },
+    { time: 18, text: "Nasceu um sonho na sala…" },
+    { time: 21, text: "Que agora pede decisão… ⚽" },
+    
+    { time: 25, text: "🎵 Pré-Refrão", type: "section" },
+    { time: 26, text: "Na sala o senhor ensina estrutura" },
+    { time: 29, text: "Mostra como tudo se conecta" },
+    { time: 32, text: "E a gente só imagina" },
+    { time: 35, text: "Essa mente brilhante na prancheta" },
+
+    { time: 39, text: "🎵 REFRÃO", type: "section" },
+    { time: 40, text: "Ô PROFESSOR…" },
+    { time: 43, text: "Vem ser o nosso técnico no futsal!" },
+    { time: 47, text: "Se no SQL o senhor faz milagre" },
+    { time: 50, text: "Imagina na beira da quadra, sensacional" },
+    { time: 54, text: "A gente precisa da sua visão" },
+    { time: 57, text: "Da sua calma e direção" },
+    { time: 60, text: "Aceita treinar esse time" },
+    { time: 63, text: "E virar nosso comandante campeão" },
+
+    { time: 68, text: "🎵 Verso 2", type: "section" },
+    { time: 69, text: "O senhor já nos ensinou" },
+    { time: 72, text: "Que erro também faz crescer" },
+    { time: 75, text: "Que cada falha é aprendizado" },
+    { time: 78, text: "Pra gente evoluir e vencer" },
+    { time: 82, text: "Então imagina o senhor" },
+    { time: 85, text: "Falando no intervalo do jogo" },
+    { time: 88, text: "“Confia no plano, confia no time!”" },
+    { time: 91, text: "Buscando a glória que nos define!" },
+
+    { time: 96, text: "🎵 Ponte", type: "section" },
+    { time: 97, text: "Não é só sobre ganhar campeonato" },
+    { time: 100, text: "É sobre união e valor" },
+    { time: 103, text: "Aceita ser nosso técnico" },
+    { time: 106, text: "E liderar com coração" },
+
+    { time: 111, text: "🎵 REFRÃO FINAL", type: "section" },
+    { time: 112, text: "Ô ALMIR…" },
+    { time: 115, text: "Vem ser o nosso técnico no futsal!" },
+    { time: 119, text: "Se já é gigante na sala" },
+    { time: 122, text: "Vai ser lendário na final" },
+    { time: 126, text: "A gente promete entrega" },
+    { time: 129, text: "Promete raça e dedicação" },
+    { time: 132, text: "Mas só fica completo" },
+    { time: 135, text: "Se o senhor aceitar essa missão" },
+
+    { time: 140, text: "(Final)", type: "section" },
+    { time: 142, text: "Entre tabelas e gols…" },
+    { time: 145, text: "Entre teoria e emoção…" },
+    { time: 148, text: "Professor almir…" },
+    { time: 151, text: "Aceita treinar nosso timão? ❤️⚽" }
+];
+        const audio = document.getElementById('audio');
+        const playBtn = document.getElementById('playBtn');
+        const container = document.getElementById('lyrics-container');
+
+        // Renderizar as letras no HTML
+        lyricsData.forEach((line, index) => {
+            const div = document.createElement('div');
+            div.className = line.type === 'section' ? 'lyric-section-title' : 'lyric-line';
+            div.id = `line-${index}`;
+            div.innerText = line.text;
+            
+            // Permite clicar na letra para pular a música para aquela parte
+            if (line.type !== 'section') {
+                div.addEventListener('click', () => {
+                    audio.currentTime = line.time;
+                    if (audio.paused) playAudio();
+                });
+            }
+            container.appendChild(div);
+        });
+
+        let isPlaying = false;
+
+        function playAudio() {
+            audio.play();
+            isPlaying = true;
+            playBtn.innerText = "⏸ Pausar Convocação";
+        }
+
+        function pauseAudio() {
+            audio.pause();
+            isPlaying = false;
+            playBtn.innerText = "▶ Retomar Convocação";
+        }
+
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                pauseAudio();
+            } else {
+                playAudio();
+            }
+        });
+
+        // Lógica de sincronização e rolagem estilo Karaokê
+        audio.addEventListener('timeupdate', () => {
+            const currentTime = audio.currentTime;
+            
+            // Encontra qual é a linha atual baseada no tempo
+            let activeIndex = -1;
+            for (let i = 0; i < lyricsData.length; i++) {
+                if (currentTime >= lyricsData[i].time) {
+                    activeIndex = i;
+                } else {
+                    break;
+                }
+            }
+
+            // Atualiza a classe ativa e faz a rolagem
+            if (activeIndex !== -1) {
+                document.querySelectorAll('.lyric-line, .lyric-section-title').forEach(el => el.classList.remove('active'));
+                
+                const activeElement = document.getElementById(`line-${activeIndex}`);
+                if (activeElement && activeElement.className.includes('lyric-line')) {
+                    activeElement.classList.add('active');
+                    
+                    // Centraliza a linha ativa no container
+                    const scrollPos = activeElement.offsetTop - (container.offsetHeight / 2) + (activeElement.offsetHeight / 2);
+                    container.scrollTo({
+                        top: scrollPos,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+
+        audio.addEventListener('ended', () => {
+            isPlaying = false;
+            playBtn.innerText = "▶ Repetir Convocação";
+            document.querySelectorAll('.lyric-line').forEach(el => el.classList.remove('active'));
+            container.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+    </script>
+</body>
+</html>
